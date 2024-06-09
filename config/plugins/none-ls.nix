@@ -13,6 +13,7 @@
         clang_format.enable = true;
         prettierd.enable = true;
         stylua.enable = true;
+        gofmt.enable = true;
         black.enable = true;
         csharpier.enable = true;
         dart_format.enable = true;

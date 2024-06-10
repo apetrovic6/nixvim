@@ -5,13 +5,14 @@
     enable = true;
     autoEnableSources = true;
 
-    settings.sources = [
-      { name = "nvim_lsp"; }
-      { name = "path"; }
-      { name = "buffer"; }
-      { name = "cmdline"; }
-      { name = "nvim_lua"; }
-    ];
+    settings.sources = [{
+      name = "nvim_lsp";
+    }
+    #     { name = "path"; }
+    #      { name = "buffer"; }
+    #      { name = "cmdline"; }
+    #      { name = "nvim_lua"; }
+      ];
 
     settings.mapping = {
       "<C-Space>" = "cmp.mapping.complete()";

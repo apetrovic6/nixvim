@@ -29,7 +29,7 @@
             [ " New File" "enew" "n" ]
             [ " Find File " "Telescope find_files" "f" ]
 
-            [ "󰍉 Find Word" "Telescope live_grep" "w" ]
+            [ " Find Word" "Telescope live_grep" "w" ]
 
             [ " File Browser" "Telescope file_browser" "e" ]
 

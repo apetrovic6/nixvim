@@ -23,146 +23,148 @@
     ./plugins/none-ls.nix
   ];
 
-    globals.mapleader = " ";
+  globals.mapleader = " ";
 
-    opts = {
-      number = true;
-      relativenumber = true;
-      shiftwidth = 2;
-      termguicolors = true;
-      fillchars = "eob: ,fold: ,vert:│";
-      autoindent = true;
-      expandtab = true;
-      smartcase = true;
-      smartindent = true;
-      wrap = false;
-      swapfile = false;
-    };
+  opts = {
+    number = true;
+    relativenumber = true;
+    shiftwidth = 2;
+    termguicolors = true;
+    fillchars = "eob: ,fold: ,vert:│";
+    autoindent = true;
+    expandtab = true;
+    smartcase = true;
+    smartindent = true;
+    wrap = false;
+    swapfile = false;
+  };
 
-    plugins = {
-      persistence.enable = true;
-      lsp-format.enable = true;
-      lualine.enable = true;
-      oil.enable = true;
-      gitgutter.enable = true;
-      treesitter-context.enable = true;
-      multicursors.enable = true;
-      fzf-lua.enable = true;
-      luasnip.enable = true;
-      nix.enable = true;
-      nix-develop.enable = true;
-      notify.enable = true;
-      # qmk.enable = true;
-      indent-o-matic.enable = true;
-      indent-blankline = {
-        enable = true;
+  plugins = {
+    persistence.enable = true;
+    lsp-format.enable = true;
+    lualine.enable = true;
+    oil.enable = true;
+    gitgutter.enable = true;
+    treesitter-context.enable = true;
+    multicursors.enable = true;
+    fzf-lua.enable = true;
+    luasnip.enable = true;
+    nix.enable = true;
+    nix-develop.enable = true;
+    notify.enable = true;
+    # qmk.enable = true;
+    indent-o-matic.enable = true;
+    indent-blankline = {
+      enable = true;
 
-        settings = {
-          debounce = 1000;
-          scope = {
-            enabled = true;
-            show_start = false;
-            injected_languages = true;
-          };
+      settings = {
+        debounce = 1000;
+        scope = {
+          enabled = true;
+          show_start = false;
+          injected_languages = true;
         };
       };
     };
+  };
 
-    plugins.mini = {
-      enable = true;
-      modules = {
-        ai = {
-          n_lines = 50;
-          search_method = "cover_or_next";
-        };
-        surround = { };
+  plugins.mini = {
+    enable = true;
+    modules = {
+      ai = {
+        n_lines = 50;
+        search_method = "cover_or_next";
       };
+      surround = { };
     };
-    plugins.lspkind = {
-      enable = true;
-      cmp.enable = true;
-    };
+  };
+  plugins.lspkind = {
+    enable = true;
+    cmp.enable = true;
+  };
 
-    plugins.nvim-colorizer.enable = true;
+  plugins.nvim-colorizer.enable = true;
 
-    plugins.leap = { enable = true; };
+  plugins.leap = { enable = true; };
 
-    # plugins.barbecue = { enable = true; };
+  # plugins.barbecue = { enable = true; };
 
-    plugins.dressing = {
-      enable = true;
+  plugins.dressing = {
+    enable = true;
 
-    };
+  };
 
-    plugins.treesitter = {
-      enable = true;
-      nixvimInjections = true;
-      indent = true;
-    };
+  plugins.treesitter = {
+    enable = true;
+    nixvimInjections = true;
+    indent = true;
+  };
 
-    keymaps = [
+  keymaps = [
 
-      {
-        action = "<cmd>wincmd j<cr>";
-        key = "<c-e>";
-        options.desc = "Focus Down Split";
-      }
+    {
+      action = "<cmd>wincmd j<cr>";
+      key = "<c-e>";
+      options.desc = "Focus Down Split";
+    }
 
-      {
-        action = "<cmd>wincmd k<cr>";
-        key = "<c-i>";
-        options.desc = "Focus Up Split";
-      }
+    {
+      action = "<cmd>wincmd k<cr>";
+      key = "<c-i>";
+      options.desc = "Focus Up Split";
+    }
 
-      {
-        action = "<cmd>wincmd l<cr>";
-        key = "<c-o>";
-        options.desc = "Focus Right Split";
-      }
+    {
+      action = "<cmd>wincmd l<cr>";
+      key = "<c-o>";
+      options.desc = "Focus Right Split";
+    }
 
-      {
-        action = "<cmd>wincmd h<cr>";
-        key = "<c-n>";
-        options.desc = "Focus Left Split";
-      }
+    {
+      action = "<cmd>wincmd h<cr>";
+      key = "<c-n>";
+      options.desc = "Focus Left Split";
+    }
 
-      {
-        action = "<cmd>only<cr>";
-        key = "<leader>wo";
-        options.desc = "Close all other windows";
-      }
+    {
+      action = "<cmd>only<cr>";
+      key = "<leader>wo";
+      options.desc = "Close all other windows";
+    }
 
-      {
-        action = "<cmd>split<cr>";
-        key = "<leader>wh";
-        options.desc = "Horizontal Split";
-      }
+    {
+      action = "<cmd>split<cr>";
+      key = "<leader>wh";
+      options.desc = "Horizontal Split";
+    }
 
-      {
-        action = "<cmd>vs<cr>";
-        key = "<leader>wv";
-        options.desc = "Vertical Split";
-      }
-    ];
+    {
+      action = "<cmd>vs<cr>";
+      key = "<leader>wv";
+      options.desc = "Vertical Split";
+    }
+  ];
 
-    clipboard.providers.wl-copy.enable = true;
-    extraPlugins = with pkgs.vimPlugins; [ flutter-tools-nvim roslyn-nvim ];
+  colorschemes.catppuccin.enable = true;
 
-    extraConfigLua = ''
-      require("flutter-tools").setup {}
-      require('telescope').load_extension('flutter')
+  clipboard.providers.wl-copy.enable = true;
+  extraPlugins = with pkgs.vimPlugins; [ flutter-tools-nvim roslyn-nvim ];
 
-      local on_attach = function(_, bufnr)
-      end
+  extraConfigLua = ''
+    require("flutter-tools").setup {}
+    require('telescope').load_extension('flutter')
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-       
-      require("roslyn").setup({
-          dotnet_cmd = "dotnet", -- this is the default
-          roslyn_version = "4.8.0-3.23475.7", -- this is the default
-          on_attach = on_attach, -- required
-          capabilities = capabilities, -- required
-      })
-    '';
+    local on_attach = function(_, bufnr)
+    end
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+     
+    require("roslyn").setup({
+        dotnet_cmd = "dotnet", -- this is the default
+        roslyn_version = "4.8.0-3.23475.7", -- this is the default
+        on_attach = on_attach, -- required
+        capabilities = capabilities, -- required
+    })
+  '';
 }

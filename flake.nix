@@ -43,7 +43,7 @@
               PS1="Nixvim: \\w \$ "
               alias vim='nvim'
             '';
-            packages = with pkgs; [ nvim ];
+            packages = [ nvim ];
           };
         };
     };

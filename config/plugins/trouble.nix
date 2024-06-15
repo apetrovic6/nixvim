@@ -10,38 +10,36 @@
     };
   };
 
-
   keymaps = [
     {
-      action = "<cmd>TroubleToggle<cr>";
+      action = "<cmd>Trouble diagnostics toggle<cr>";
       key = "<leader>tt";
-      options.desc = "Toggle Trouble";
+      options.desc = "Diagnostics";
     }
     {
-      action = "<cmd>TroubleToggle workspace_diagnostics<cr>";
-      key = "<leader>tw";
-      options.desc = "Workspace Diagnostics";
+      action = "<leader>tT";
+      key = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
+      options.desc = "Buffer Diagnostics";
     }
     {
-      action = "<cmd>TroubleToggle document_diagnostics<cr>";
-      key = "<leader>td";
-      options.desc = "Document Diagnostics";
+      action = "<leader>ts";
+      key = "<cmd>Trouble symbols toggle focus=false<cr>";
+      options.desc = "Symbols";
     }
     {
-      action = "<cmd>TroubleToggle quickfix<cr>";
-      key = "<leader>tq";
-      options.desc = "Quick Fix";
+      action = "<cmd>Trouble lsp toggle focus=false win.position=right<cr>";
+      key = "<leader>tr";
+      options.desc = "Lsp References";
     }
     {
-      action = "<cmd>TroubleToggle loclist<cr>";
+      action = "<cmd>Trouble loclist toggle<cr>";
       key = "<leader>tl";
       options.desc = "Loc List";
     }
     {
-      action = "<cmd>TroubleToggle lsp_references<cr>";
-      key = "<leader>tr";
-      options.desc = "Lsp References";
+      action = "<cmd>Trouble qflist toggle<cr>";
+      key = "<leader>tq";
+      options.desc = "Quick Fix";
     }
-
   ];
 }

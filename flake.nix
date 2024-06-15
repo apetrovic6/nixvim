@@ -10,11 +10,9 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    stylix.url = "github:danth/stylix";
-
   };
 
-  outputs = { self, nixpkgs, nixvim, flake-parts, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, nixvim, flake-parts, ... }@inputs:
     let config = import ./config;
     in flake-parts.lib.mkFlake { inherit inputs; } {
       systems =

@@ -16,8 +16,8 @@
 
     settings.mapping = {
       "<C-Space>" = "cmp.mapping.complete()";
-      "<C-s>" = "cmp.mapping.scroll_docs(-4)";
-      "<C-r>" = "cmp.mapping.scroll_docs(4)";
+      "<C-r>" = "cmp.mapping.scroll_docs(-4)";
+      "<C-s>" = "cmp.mapping.scroll_docs(4)";
       "<C-l>" = "cmp.mapping.close()";
       "<C-y>" = "cmp.mapping.confirm({ select = true })";
       "<C-i>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";

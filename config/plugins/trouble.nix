@@ -17,13 +17,13 @@
       options.desc = "Diagnostics";
     }
     {
-      action = "<leader>tT";
-      key = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
+      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
+      key = "<leader>tT";
       options.desc = "Buffer Diagnostics";
     }
     {
-      action = "<leader>ts";
-      key = "<cmd>Trouble symbols toggle focus=false<cr>";
+      action = "<cmd>Trouble symbols toggle focus=false<cr>";
+      key = "<leader>ts";
       options.desc = "Symbols";
     }
     {

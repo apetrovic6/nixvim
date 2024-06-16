@@ -46,7 +46,9 @@
     oil.enable = true;
     gitgutter.enable = true;
     treesitter-context.enable = true;
-    multicursors.enable = true;
+
+    ###    multicursors.enable = true;
+
     fzf-lua.enable = true;
     luasnip.enable = true;
     nix.enable = true;
@@ -87,12 +89,7 @@
 
   plugins.leap = { enable = true; };
 
-  # plugins.barbecue = { enable = true; };
-
-  plugins.dressing = {
-    enable = true;
-
-  };
+  plugins.dressing.enable = true;
 
   plugins.treesitter = {
     enable = true;

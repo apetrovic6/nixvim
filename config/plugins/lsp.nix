@@ -30,7 +30,7 @@
 
       gopls.enable = true;
 
-      omnisharp.enable = true;
+      #      omnisharp.enable = true;
     };
 
     keymaps.diagnostic = {

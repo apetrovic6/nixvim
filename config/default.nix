@@ -145,23 +145,53 @@
   colorschemes.catppuccin.enable = true;
 
   clipboard.providers.wl-copy.enable = true;
-  extraPlugins = with pkgs.vimPlugins; [ flutter-tools-nvim roslyn-nvim ];
+  extraPlugins = with pkgs.vimPlugins; [
+    hardtime-nvim
+    flutter-tools-nvim
+    roslyn-nvim
+    rzls
+  ];
 
   extraConfigLua = ''
-    require("flutter-tools").setup {}
-    require('telescope').load_extension('flutter')
+     require("flutter-tools").setup {}
+     require('telescope').load_extension('flutter')
+     require("hardtime").setup({
+       disable_mouse = false,
 
-    local on_attach = function(_, bufnr)
-    end
+       disabled_keys =  {
+         ["<Up>"] =  {},
+         ["<Down>"] = {},
+         ["<Right>"] ={},
+         ["<Left>"] = {},
+       },
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-     
-    require("roslyn").setup({
-        dotnet_cmd = "dotnet", -- this is the default
-        roslyn_version = "4.8.0-3.23475.7", -- this is the default
-        on_attach = on_attach, -- required
-        capabilities = capabilities, -- required
-    })
+       restricted_keys =  {
+         ["<Up>"] =  {"n", "x"},
+         ["<Down>"] = {"n", "x"},
+         ["<Right>"] ={"n", "x"},
+         ["<Left>"] = {"n", "x"},
+       },
+
+     })
+
+     local on_attach = function(_, bufnr)
+     end
+
+     local capabilities = vim.lsp.protocol.make_client_capabilities()
+     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+      
+     require("roslyn").setup({
+         dotnet_cmd = "dotnet", -- this is the default
+         roslyn_version = "4.8.0-3.23475.7", -- this is the default
+         on_attach = on_attach, -- required
+         capabilities = capabilities, -- required
+     })
+
+    require("rzls").setup({
+         on_attach = on_attach, 
+         capabilities = capabilities, 
+         path = "${pkgs.vimPlugins.rzls}"
+     })
   '';
 }

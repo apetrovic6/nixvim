@@ -153,45 +153,50 @@
   ];
 
   extraConfigLua = ''
-     require("flutter-tools").setup {}
-     require('telescope').load_extension('flutter')
-     require("hardtime").setup({
-       disable_mouse = false,
+      require("flutter-tools").setup{
+    debugger = { -- integrate with nvim dap + install dart code debugger
+       enabled = true,
+       run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
+     },
+      }
+         require('telescope').load_extension('flutter')
+         require("hardtime").setup({
+           disable_mouse = false,
 
-       disabled_keys =  {
-         ["<Up>"] =  {},
-         ["<Down>"] = {},
-         ["<Right>"] ={},
-         ["<Left>"] = {},
-       },
+           disabled_keys =  {
+             ["<Up>"] =  {},
+             ["<Down>"] = {},
+             ["<Right>"] ={},
+             ["<Left>"] = {},
+           },
 
-       restricted_keys =  {
-         ["<Up>"] =  {"n", "x"},
-         ["<Down>"] = {"n", "x"},
-         ["<Right>"] ={"n", "x"},
-         ["<Left>"] = {"n", "x"},
-       },
+           restricted_keys =  {
+             ["<Up>"] =  {"n", "x"},
+             ["<Down>"] = {"n", "x"},
+             ["<Right>"] ={"n", "x"},
+             ["<Left>"] = {"n", "x"},
+           },
 
-     })
+         })
 
-     local on_attach = function(_, bufnr)
-     end
+         local on_attach = function(_, bufnr)
+         end
 
-     local capabilities = vim.lsp.protocol.make_client_capabilities()
-     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+         local capabilities = vim.lsp.protocol.make_client_capabilities()
+         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-      
-     require("roslyn").setup({
-         dotnet_cmd = "dotnet", -- this is the default
-         roslyn_version = "4.8.0-3.23475.7", -- this is the default
-         on_attach = on_attach, -- required
-         capabilities = capabilities, -- required
-     })
+          
+         require("roslyn").setup({
+             dotnet_cmd = "dotnet", -- this is the default
+             roslyn_version = "4.8.0-3.23475.7", -- this is the default
+             on_attach = on_attach, -- required
+             capabilities = capabilities, -- required
+         })
 
-    require("rzls").setup({
-         on_attach = on_attach, 
-         capabilities = capabilities, 
-         path = "${pkgs.vimPlugins.rzls}"
-     })
+        require("rzls").setup({
+             on_attach = on_attach, 
+             capabilities = capabilities, 
+             path = "${pkgs.vimPlugins.rzls}"
+         })
   '';
 }

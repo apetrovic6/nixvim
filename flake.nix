@@ -23,15 +23,8 @@
       overlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           rzls = prev.vimUtils.buildVimPlugin {
-            pname = "rzls.nvim";
-            version = "latest";
-            src = prev.fetchFromGitHub {
-              owner = "tris203";
-              repo = "rzls.nvim";
-              rev = "main";
-              sha256 =
-                "sha256-HYXgmsu0eJ+7hklJE41rkVYVCMLOg55Hxz7T7kTztqE="; # Replace with the actual sha256 hash
-            };
+            name = "rzls";
+            src = plugin-rzls;
           };
         };
       };

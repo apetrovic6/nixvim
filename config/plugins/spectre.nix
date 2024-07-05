@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  plugins.spectre.enable = true;
+  plugins.spectre.enable = false;
 
   keymaps = [
     {
@@ -10,7 +10,8 @@
       options.desc = "Toggle Spectre";
     }
     {
-      action = "<cmd>lua require('spectre').open_visual({select_word=true})<cr>";
+      action =
+        "<cmd>lua require('spectre').open_visual({select_word=true})<cr>";
       key = "<leader>fsw";
       options.desc = "Search current word";
     }
@@ -20,7 +21,8 @@
       options.desc = "Search current word";
     }
     {
-      action = "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>";
+      action =
+        "<cmd>lua require('spectre').open_file_search({select_word=true})<cr>";
       key = "<leader>fsf";
       options.desc = "Search on current file";
     }

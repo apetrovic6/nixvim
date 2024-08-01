@@ -4,6 +4,7 @@
   plugins.lsp = {
     enable = true;
     servers = {
+      elixirls.enable = true;
       tsserver.enable = true;
       lua-ls = {
         enable = true;

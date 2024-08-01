@@ -4,7 +4,7 @@
   plugins.lsp = {
     enable = true;
     servers = {
-      nextls.enable = true;
+      elixirls.enable = true;
       tsserver.enable = true;
       lua-ls = {
         enable = true;

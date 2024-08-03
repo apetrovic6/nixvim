@@ -95,7 +95,51 @@
     enable = true;
     nixvimInjections = true;
     indent = true;
-    settings.highlight.enable = true;
+    settings = {
+      highlight.enable = true;
+      ensure_installed = [
+        "eex"
+        "elixir"
+        "erlang"
+        "heex"
+        "iex"
+        "html"
+        "surface"
+        "json"
+        "jsdoc"
+        "angular"
+        "bash"
+        "asm"
+        "c"
+        "cpp"
+        "css"
+        "csv"
+        "dart"
+        "dockerfile"
+        "doxygen"
+        "go"
+        "gomod"
+        "gosum"
+        "graphql"
+        "javascript"
+        "lua"
+        "luadoc"
+        "make"
+        "markdown"
+        "ocaml"
+        "proto"
+        "python"
+        "regex"
+        "rust"
+        "sql"
+        "typescript"
+        "udev"
+        "yaml"
+        "xml"
+      ];
+      auto_install = true;
+    };
+
   };
 
   keymaps = [

@@ -102,7 +102,6 @@
         "elixir"
         "erlang"
         "heex"
-        "iex"
         "html"
         "surface"
         "json"

@@ -49,6 +49,10 @@
       key = "<s-o>";
       options.desc = "Next Buffer";
     }
-
+    {
+      action = "<cmd>BufferLinePickClose<cr>";
+      key = "<leader>bc";
+      options.desc = "Close Buffer";
+    }
   ];
 }

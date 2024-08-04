@@ -6,6 +6,12 @@
     servers = {
       elixirls.enable = true;
       tsserver.enable = true;
+      emmet-ls.enable = true;
+      tailwindcss = {
+        enable = true;
+
+      };
+
       lua-ls = {
         enable = true;
         settings.telemetry.enable = false;

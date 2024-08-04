@@ -90,12 +90,11 @@
   plugins.leap = { enable = true; };
 
   plugins.dressing.enable = true;
-
   plugins.treesitter = {
     enable = true;
     nixvimInjections = true;
-    indent = true;
     settings = {
+      indent.enable = true;
       highlight.enable = true;
       ensure_installed = [
         "eex"
@@ -200,52 +199,79 @@
 
   extraConfigLua = # lua
     ''
-        require("flutter-tools").setup{
-      debugger = { -- integrate with nvim dap + install dart code debugger
-         enabled = true,
-         run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
-       },
-        }
-           require('telescope').load_extension('flutter')
-           require("hardtime").setup({
-             disable_mouse = false,
+                                require("flutter-tools").setup{
+                              debugger = { -- integrate with nvim dap + install dart code debugger
+                                 enabled = true,
+                                 run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
+                               },
+                                }
+                                   require('telescope').load_extension('flutter')
+                                   require("hardtime").setup({
+                                     disable_mouse = false,
 
-             disabled_keys =  {
-               ["<Up>"] =  {},
-               ["<Down>"] = {},
-               ["<Right>"] ={},
-               ["<Left>"] = {},
-             },
+                                     disabled_keys =  {
+                                       ["<Up>"] =  {},
+                                       ["<Down>"] = {},
+                                       ["<Right>"] ={},
+                                       ["<Left>"] = {},
+                                     },
 
-             restricted_keys =  {
-               ["<Up>"] =  {"n", "x"},
-               ["<Down>"] = {"n", "x"},
-               ["<Right>"] ={"n", "x"},
-               ["<Left>"] = {"n", "x"},
-             },
+                                     restricted_keys =  {
+                                       ["<Up>"] =  {"n", "x"},
+                                       ["<Down>"] = {"n", "x"},
+                                       ["<Right>"] ={"n", "x"},
+                                       ["<Left>"] = {"n", "x"},
+                                     },
 
-           })
+                                   })
 
-           local on_attach = function(_, bufnr)
-           end
+                                   local on_attach = function(_, bufnr)
+                                   end
 
-           local capabilities = vim.lsp.protocol.make_client_capabilities()
-           capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+                                   local capabilities = vim.lsp.protocol.make_client_capabilities()
+                                   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-           require("roslyn").setup({
-               dotnet_cmd = "dotnet", -- this is the default
-               roslyn_version = "4.8.0-3.23475.7", -- this is the default
-               on_attach = on_attach, -- required
-               capabilities = capabilities, -- required
-           })
+                                   require("roslyn").setup({
+                                       dotnet_cmd = "dotnet", -- this is the default
+                                       roslyn_version = "4.8.0-3.23475.7", -- this is the default
+                                       on_attach = on_attach, -- required
+                                       capabilities = capabilities, -- required
+                                   })
 
-          require("rzls").setup({
-               on_attach = on_attach, 
-               capabilities = capabilities, 
-               path = "${pkgs.vimPlugins.rzls}"
-           })
+                                  require("rzls").setup({
+                                       on_attach = on_attach, 
+                                       capabilities = capabilities, 
+                                       path = "${pkgs.vimPlugins.rzls}"
+                                   })
 
+      local lspconfig = require("lspconfig")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        filetypes = { "html", "elixir", "eelixir", "heex" },
+        init_options = {
+          userLanguages = {
+            elixir = "html-eex",
+            eelixir = "html-eex",
+            heex = "html-eex",
+          },
+        },
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              classRegex = {
+                'class[:]\\s*"([^"]*)"',
+              },
+            },
+          },
+        },
+      })
+
+      lspconfig.emmet_ls.setup({
+        capabilities = capabilities,
+        filetypes = { "html", "css", "elixir", "eelixir", "heex" },
+      })
 
     '';
 }

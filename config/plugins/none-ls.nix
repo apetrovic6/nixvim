@@ -2,7 +2,7 @@
 
 {
   plugins.none-ls = {
-    enable = true;
+    enable = false;
     enableLspFormat = true;
     sources = {
       # diagnostics = { mypy.enable = true; };
